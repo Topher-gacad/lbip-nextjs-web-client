@@ -52,8 +52,8 @@ const LogIn = () => {
               sx={{
                 width: "100%",
                 display: "flex",
-                flexDirection: "column", // Stack fields vertically
-                gap: "16px", // Add gap between fields
+                flexDirection: "column",
+                gap: "16px",
               }}
             >
               <Box>
@@ -62,10 +62,10 @@ const LogIn = () => {
                   fullWidth
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "8px", // Set border radius for the TextField
+                      borderRadius: "8px",
                     },
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#D1D5DB", // Set the border color
+                      borderColor: "#D1D5DB",
                     },
                   }}
                 />
@@ -76,10 +76,10 @@ const LogIn = () => {
                   fullWidth
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      borderRadius: "8px", // Set border radius for the TextField
+                      borderRadius: "8px",
                     },
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#D1D5DB", // Set the border color
+                      borderColor: "#D1D5DB",
                     },
                   }}
                 />
@@ -90,7 +90,7 @@ const LogIn = () => {
                 display: "flex",
                 width: "100%",
                 alignItems: "center",
-                justifyContent: "space-between", // Space between the two boxes
+                justifyContent: "space-between",
               }}
             >
               <Box
@@ -109,8 +109,8 @@ const LogIn = () => {
                   href="/forgot-password"
                   sx={{
                     color: "#5E72E4",
-                    textDecoration: "none", // Removes underline
-                    cursor: "pointer", // Makes it look clickable
+                    textDecoration: "none",
+                    cursor: "pointer",
                   }}
                 >
                   Forgot Password?
@@ -123,10 +123,10 @@ const LogIn = () => {
               fullWidth
               sx={{
                 height: "50px",
-                backgroundColor: "#5E72E4", // Set button background color
-                color: "#FFFFFF", // Set text color
+                backgroundColor: "#5E72E4",
+                color: "#FFFFFF",
                 "&:hover": {
-                  backgroundColor: "#4A60C4", // Slightly darker shade for hover
+                  backgroundColor: "#4A60C4",
                 },
               }}
             >
