@@ -40,7 +40,7 @@ const getAuthenticatedUser = async (): Promise<AuthResponse> => {
   const validatedResponse = authResponseSchema.safeParse(response.data);
 
   if (!validatedResponse.success) {
-    logInDevelopment(validatedResponse.error.message);
+    logInDevelopment(`useGetAuthenticated user : ${validatedResponse.error.message}`);
 
     return {
       success: false,
