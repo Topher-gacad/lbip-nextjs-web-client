@@ -1,8 +1,8 @@
 import { responseSchema } from "@/schemas/json-response";
 import { z } from "zod";
 
-export type TUserSchema = z.infer<typeof UserSchema>;
-export const UserSchema = z.object({
+export type TUsersSchema = z.infer<typeof UsersSchema>;
+export const UsersSchema = z.object({
   id: z.string().optional(),
 
   email: z.string().min(1, "Email is required"),
@@ -11,7 +11,7 @@ export const UserSchema = z.object({
     .string()
     .min(8, "Password must be at least 8 characters")
     .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .regex(/[a-Z]/, "Password must contain at least one lowercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
     .regex(/[0-9]/, "Password must contain at least one number letter")
     .regex(
       /[^A-Za-z0-9]/,
@@ -41,7 +41,7 @@ export const ProfileSchema = z.object({
 });
 
 export type TCreateUserProfileSchema = z.infer<typeof CreateUserProfileSchema>;
-export const CreateUserProfileSchema = UserSchema.merge(ProfileSchema).refine(
+export const CreateUserProfileSchema = UsersSchema.merge(ProfileSchema).refine(
   data => data.password === data.password_confirmation,
   {
     message: "Password don't match",
@@ -50,7 +50,7 @@ export const CreateUserProfileSchema = UserSchema.merge(ProfileSchema).refine(
 );
 
 export type TUserProfileSchema = z.infer<typeof UserProfileSchema>;
-export const UserProfileSchema = UserSchema.extend({ profile: ProfileSchema });
+export const UserProfileSchema = UsersSchema.extend({ profile: ProfileSchema });
 
 export type TUserResponseSchema = z.infer<typeof UserResponseSchema>;
 export const UserResponseSchema = responseSchema.extend({
