@@ -57,7 +57,12 @@ const LogoutButton = () => {
           </Typography>
         </DialogContent>
         <DialogActions sx={{ gap: 1, px: 3, pb: 3 }}>
-          <Button color="primary" variant="outlined" fullWidth>
+          <Button
+            onClick={handleClose}
+            color="primary"
+            variant="outlined"
+            fullWidth
+          >
             Cancel
           </Button>
           <Button

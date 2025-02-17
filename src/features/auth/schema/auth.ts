@@ -6,6 +6,7 @@ import {
   baseRoleSchema,
   baseUserSchema,
 } from "@/schemas/base";
+import { RoleSchema } from "@/features/role/schema/role";
 
 export const roleEnum = z.enum(["super-admin", "admin", "manager", "user"]);
 
@@ -28,4 +29,11 @@ export const authResponseSchema = responseSchema.extend({
     })
     .nullable()
     .optional(),
+});
+
+export type TRolesPaginatedResponseSchema = z.infer<
+  typeof rolesPaginatedResponseSchema
+>;
+export const rolesPaginatedResponseSchema = responseSchema.extend({
+  data: z.array(RoleSchema),
 });
