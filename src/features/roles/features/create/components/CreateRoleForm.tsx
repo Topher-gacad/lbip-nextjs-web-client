@@ -6,7 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePostRoleFormMutation } from "../hooks/usePostRoleFormMutation";
 import { enqueueSnackbar } from "notistack";
-import { RoleSchema, TRoleSchema } from "@/features/auth/schema/role";
+import { RoleSchema, TRoleSchema } from "@/features/roles/schema/role";
 
 const CreateRoleForm = () => {
   const {

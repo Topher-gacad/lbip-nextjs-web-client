@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { logInDevelopment } from "@/utils";
 import { responseSchema, TBaseResponse } from "@/schemas/json-response";
 import axiosInstance from "@/lib/axios/axios-instance";
-import { TRoleSchema } from "@/features/auth/schema/role";
+import { TRoleSchema } from "@/features/roles/schema/role";
 
 type UpdateRolesArg = {
   rolesUpdateData: TRoleSchema;

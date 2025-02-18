@@ -26,7 +26,7 @@ import { useEffect } from "react";
 // import { groupBy } from "lodash";
 import PermissionGuard from "@/features/auth/components/PermissionGuard";
 import { RolePermission } from "@/constant";
-import { RoleSchema, TRoleSchema } from "@/features/auth/schema/role";
+import { RoleSchema, TRoleSchema } from "@/features/roles/schema/role";
 import { useUpdateRolesMutation } from "../hooks/useUpdateRolesMutation";
 
 type EditRoleFormProps = {

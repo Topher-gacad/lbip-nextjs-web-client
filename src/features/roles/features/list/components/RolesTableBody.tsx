@@ -1,6 +1,6 @@
 "use client";
 
-import { TRoleSchema } from "@/features/auth/schema/role";
+import { TRoleSchema } from "@/features/roles/schema/role";
 import {
   TableBody as MuiTableBody,
   TableCell as MuiTableCell,

@@ -10,7 +10,7 @@ import Link from "next/link";
 import { RolePermission } from "@/constant";
 import PermissionGuard from "@/features/auth/components/PermissionGuard";
 import { useCallback } from "react";
-import { TRoleSchema } from "@/features/auth/schema/role";
+import { TRoleSchema } from "@/features/roles/schema/role";
 import { useRolesTableStore } from "../hooks/useRolesTableStore";
 
 type PCell = {

@@ -1,7 +1,7 @@
 import {
   RoleResponseSchema,
   TRoleResponseSchema,
-} from "@/features/auth/schema/role";
+} from "@/features/roles/schema/role";
 import axiosInstance from "@/lib/axios/axios-instance";
 import { logInDevelopment } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
