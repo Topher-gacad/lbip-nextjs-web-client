@@ -1,8 +1,8 @@
 import { responseSchema } from "@/schemas/json-response";
 import { z } from "zod";
 
-export type TUsersSchema = z.infer<typeof UserSchema>;
-export const UserSchema = z.object({
+export type TUsersSchema = z.infer<typeof UsersSchema>;
+export const UsersSchema = z.object({
   id: z.string().optional(),
   email: z.string().min(1, "Email is required"),
   password_confirmation: z
@@ -37,7 +37,7 @@ export const ProfileSchema = z.object({
 });
 
 export type TCreateUserProfileSchema = z.infer<typeof CreateUserProfileSchema>;
-export const CreateUserProfileSchema = UserSchema.merge(ProfileSchema).refine(
+export const CreateUserProfileSchema = UsersSchema.merge(ProfileSchema).refine(
   data => data.password === data.password_confirmation,
   {
     message: "Password don't match",
@@ -46,7 +46,7 @@ export const CreateUserProfileSchema = UserSchema.merge(ProfileSchema).refine(
 );
 
 export type TUserProfileSchema = z.infer<typeof UserProfileSchema>;
-export const UserProfileSchema = UserSchema.extend({ profile: ProfileSchema });
+export const UserProfileSchema = UsersSchema.extend({ profile: ProfileSchema });
 
 export type TUsersResponseSchema = z.infer<typeof UsersResponseSchema>;
 export const UsersResponseSchema = responseSchema.extend({
