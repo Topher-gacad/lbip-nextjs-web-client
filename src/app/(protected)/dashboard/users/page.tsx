@@ -1,6 +1,8 @@
-const UserPage = () => {
+import UsersTable from "@/features/user/feature/list/components/UsersTable"
+
+const UsersPage = () => {
   return (
-    <div>UserPage</div>
+    <div><UsersTable /></div>
   )
 }
-export default UserPage
+export default UsersPage
