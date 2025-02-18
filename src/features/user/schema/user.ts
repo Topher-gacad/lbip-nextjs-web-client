@@ -4,26 +4,22 @@ import { z } from "zod";
 export type TUsersSchema = z.infer<typeof UsersSchema>;
 export const UsersSchema = z.object({
   id: z.string().optional(),
-
   email: z.string().min(1, "Email is required"),
-
+  password_confirmation: z
+    .string()
+    .min(8, "Password confirmation must be at least 8 characters")
+    .optional(),
   password: z
     .string()
-    .min(8, "Password must be at least 8 characters")
+    .min(8, "Password confirmation must be at least 8 characters")
     .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
     .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-    .regex(/[0-9]/, "Password must contain at least one number letter")
+    .regex(/[0-9]/, "Password must contain at least one number")
     .regex(
       /[^A-Za-z0-9]/,
       "Password must contain at least one special character"
     )
     .optional(),
-
-  password_confirmation: z
-    .string()
-    .min(8, "Password confirmation must be at least 8 characters")
-    .optional(),
-
   created_at: z.string().optional(),
 });
 
@@ -52,8 +48,8 @@ export const CreateUserProfileSchema = UsersSchema.merge(ProfileSchema).refine(
 export type TUserProfileSchema = z.infer<typeof UserProfileSchema>;
 export const UserProfileSchema = UsersSchema.extend({ profile: ProfileSchema });
 
-export type TUserResponseSchema = z.infer<typeof UserResponseSchema>;
-export const UserResponseSchema = responseSchema.extend({
+export type TUsersResponseSchema = z.infer<typeof UsersResponseSchema>;
+export const UsersResponseSchema = responseSchema.extend({
   data: z.object({
     data: z.array(UserProfileSchema),
     links: z.object({}),
