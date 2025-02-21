@@ -1,8 +1,14 @@
-import { responseSchema } from "@/schemas/json-response";
+import {
+  apiPaginatedResponseSchema,
+  responseSchema,
+} from "@/schemas/json-response";
 import { z } from "zod";
 
-export type TUsersSchema = z.infer<typeof UsersSchema>;
-export const UsersSchema = z.object({
+/**
+ * USER SCHEMA
+ */
+export type TUsersSchema = z.infer<typeof UserSchema>;
+export const UserSchema = z.object({
   id: z.string().optional(),
   email: z.string().min(1, "Email is required"),
   password_confirmation: z
@@ -23,6 +29,10 @@ export const UsersSchema = z.object({
   created_at: z.string().optional(),
 });
 
+
+/**
+ * PROFILE SCHEMA
+ */
 export type TProfileSchema = z.infer<typeof ProfileSchema>;
 export const ProfileSchema = z.object({
   first_name: z.string().min(1, "First name must be at least 1 character long"),
@@ -36,8 +46,38 @@ export const ProfileSchema = z.object({
   gender: z.string().optional().nullable(),
 });
 
+
+/**
+ * TODO: TRANSFER TO FEATURE/AUTH
+ * MERGED USER PROFILE SCHEMA
+ */
+export type TRoleSchema = z.infer<typeof RoleSchema>
+export const RoleSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  created_at: z.string().nullable().optional(),
+  updated_at: z.string().nullable().optional(),
+  deleted_at: z.string().nullable().optional(),
+})
+
+/**
+ * MERGED USER PROFILE SCHEMA
+ */
+const picked = UserSchema.pick({
+  id: true,
+  email: true,
+});
+
+export const userSchemaKeys = picked.keyof()._def.values;
+export const profileSchemaKeys = ProfileSchema.keyof()._def.values;
+export const roleSchemaKeys = RoleSchema.keyof()._def.values;
+
+
+/**
+ * CREATE USER PROFILE SCHEMA
+ */
 export type TCreateUserProfileSchema = z.infer<typeof CreateUserProfileSchema>;
-export const CreateUserProfileSchema = UsersSchema.merge(ProfileSchema).refine(
+export const CreateUserProfileSchema = UserSchema.merge(ProfileSchema).refine(
   data => data.password === data.password_confirmation,
   {
     message: "Password don't match",
@@ -46,13 +86,23 @@ export const CreateUserProfileSchema = UsersSchema.merge(ProfileSchema).refine(
 );
 
 export type TUserProfileSchema = z.infer<typeof UserProfileSchema>;
-export const UserProfileSchema = UsersSchema.extend({ profile: ProfileSchema });
+export const UserProfileSchema = UserSchema.extend({ profile: ProfileSchema, roles: z.array(RoleSchema)});
 
-export type TUsersResponseSchema = z.infer<typeof UsersResponseSchema>;
-export const UsersResponseSchema = responseSchema.extend({
-  data: z.object({
-    data: z.array(UserProfileSchema),
-    links: z.object({}),
-    meta: z.object({}),
-  }),
+/**
+ * SINGLE USER RESPONSE SCHEMA
+ */
+export type TSingleUserResponseSchema = z.infer<typeof SingleUsersResponseSchema>;
+export const SingleUsersResponseSchema = responseSchema.extend({
+  data: UserProfileSchema
+});
+
+
+/**
+ * ALL USERS RESPONSE SCHEMA
+ */
+export type TUsersPaginatedResponseSchema = z.infer<
+  typeof usersPaginatedResponseSchema
+>;
+export const usersPaginatedResponseSchema = responseSchema.extend({
+  data: apiPaginatedResponseSchema.extend({ data: z.array(UserProfileSchema) }),
 });
