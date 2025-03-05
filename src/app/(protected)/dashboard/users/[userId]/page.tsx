@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import UserDetails from "@/components/ui/user-details/UserDetails";
 import UserDetailsSkeleton from "@/components/ui/user-details/UserDetailsSkeleton";
@@ -12,7 +12,11 @@ const DetailsPage = () => {
   const { userId } = useParams();
   const id = userId as string;
 
-  const { data: { data: user } = {}, isLoading, isError } = useGetSingleUserQuery(id);
+  const {
+    data: { data: user } = {},
+    isLoading,
+    isError,
+  } = useGetSingleUserQuery(id);
 
   if (isError) {
     return (
@@ -27,7 +31,7 @@ const DetailsPage = () => {
   }
 
   if (user) {
-    return <UserDetails user={user }/>;
+    return <UserDetails user={user} />;
   }
   return <div>DetailsPage</div>;
 };
