@@ -49,3 +49,4 @@ export const baseUserSchema = z.object({
   roles: z.array(baseRoleSchema).nullable().optional(),
   permissions: z.array(basePermissionSchema).nullable().optional(),
 });
+

@@ -1,13 +1,13 @@
 import { Stack, Toolbar } from "@mui/material";
 import LogoWithText from "../../LogoWithText";
+import theme from "@/lib/mui/theme";
 
 const DrawerHeader = () => {
   return (
     <Toolbar
       sx={theme => ({
         zIndex: theme.zIndex.appBar + 1,
-        backgroundColor: theme.palette.common.white,
-        borderBottom: `1px solid ${theme.palette.divider}`,
+        backgroundColor: theme.palette.common.black,
         paddingRight: 2,
       })}
     >
@@ -17,6 +17,8 @@ const DrawerHeader = () => {
           flexDirection: "row",
           gap: 2,
           alignItems: "center",
+          color: theme.palette.common.white,
+          bgcolor: theme.palette.common.black,
           justifyContent: "space-between",
         }}
       >

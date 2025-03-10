@@ -5,9 +5,9 @@ import {
 } from "@tanstack/react-table";
 import { useGetRolesQuery } from "./useGetRolesQuery";
 import RolesTableActionsCell from "../components/RoleTableActionsCell";
-import { TRoleSchema } from "@/features/roles/schema/role";
+import { TRole } from "@/features/roles/schema/role";
 
-const columnHelper = createColumnHelper<TRoleSchema>();
+const columnHelper = createColumnHelper<TRole>();
 
 export const useRolesTable = () => {
   const { data = { data: [] } } = useGetRolesQuery();

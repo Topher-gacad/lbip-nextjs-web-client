@@ -1,23 +1,17 @@
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
-import CorporateFareOutlinedIcon from "@mui/icons-material/CorporateFareOutlined";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import { SvgIconProps } from "@mui/material";
 import { ComponentType } from "react";
-import ScheduleOutlinedIcon from "@mui/icons-material/ScheduleOutlined";
-import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import {
-  DepartmentPermission,
-  JobTitlePermission,
-  ProjectPermission,
-  RolePermission,
-  SchedulePermission,
-  ScheduleTypePermission,
-  UserPermission,
-} from "@/constant/permissions";
+import { RolePermission, UserPermission } from "@/constant/permissions";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
+import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
+import BuildOutlinedIcon from "@mui/icons-material/BuildOutlined";
+import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
+import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
+import SignalCellularAltRoundedIcon from "@mui/icons-material/SignalCellularAltRounded";
 
 type MenuGroupItemChildren = {
   id: string;
@@ -51,18 +45,26 @@ export type MenuGroup = {
 
 const dashboard: MenuGroup = {
   id: "dashboard",
-  title: "Dashboard",
+  title: "DASHBOARD",
   type: "group",
   children: [
     {
-      id: "home",
-      title: "Home",
+      id: "dashboard",
+      title: "Dashboard",
       type: "item",
       url: "/dashboard",
-      icon: HomeOutlinedIcon,
+      icon: SignalCellularAltRoundedIcon,
       isUrlCheckedEndsWith: true,
       description: "Default page",
     },
+  ],
+};
+
+const modules: MenuGroup = {
+  id: "modules",
+  title: "MODULES",
+  type: "group",
+  children: [
     {
       id: "user",
       title: "Users",
@@ -92,114 +94,85 @@ const dashboard: MenuGroup = {
       ],
     },
     {
-      id: "project",
-      title: "Projects",
-      type: "collapse",
-      url: "/dashboard/projects",
-      icon: AssignmentOutlinedIcon,
-      description: "You can manage and view the projects table here",
-      children: [
-        {
-          id: "project-list",
-          title: "List",
-          url: "/dashboard/projects",
-          requiredPermission: [ProjectPermission.ViewMany],
-        },
-        {
-          id: "project-create",
-          title: "Create",
-          url: "/dashboard/projects/create",
-          requiredPermission: [ProjectPermission.Create],
-        },
-        {
-          id: "project-import",
-          title: "Import",
-          url: "/dashboard/projects/import",
-          requiredPermission: [ProjectPermission.Import],
-        },
-      ],
+      id: "property",
+      title: "Property",
+      type: "item",
+      url: "/dashboard/property",
+      icon: MapsHomeWorkOutlinedIcon,
+      description: "You can view your account details here",
     },
     {
-      id: "schedule",
-      title: "Schedules",
-      url: "/dashboard/schedules",
-      type: "collapse",
-      icon: CalendarMonthOutlinedIcon,
-      description: "You can manage and view the schedules table here",
-      children: [
-        {
-          id: "schedules-list",
-          title: "List",
-          url: "/dashboard/schedules",
-          requiredPermission: [SchedulePermission.ViewMany],
-        },
-        {
-          id: "schedule-daily-view",
-          title: "Daily View",
-          url: "/dashboard/schedules/daily-view",
-          requiredPermission: [SchedulePermission.ViewMany],
-        },
-        {
-          id: "schedule-import",
-          title: "Import",
-          url: "/dashboard/schedules/import",
-          requiredPermission: [SchedulePermission.Import],
-        },
-      ],
+      id: "billing",
+      title: "Billing",
+      type: "item",
+      url: "/dashboard/billing",
+      icon: CreditCardOutlinedIcon,
+      description: "You can view your account details here",
+    },
+    {
+      id: "maintenance",
+      title: "Maintenance",
+      type: "item",
+      url: "/dashboard/maintenance",
+      icon: BuildOutlinedIcon,
+      description: "You can view your account details here",
     },
   ],
 };
 
-const manage: MenuGroup = {
-  id: "manage",
-  title: "Manage",
+const account: MenuGroup = {
+  id: "Account",
+  title: "ACCOUNT",
   type: "group",
   children: [
     {
-      id: "department",
-      title: "Departments",
-      url: "/dashboard/departments",
+      id: "profile",
+      title: "Profile",
       type: "item",
-      icon: CorporateFareOutlinedIcon,
-      requiredPermission: [
-        DepartmentPermission.ViewMany,
-        DepartmentPermission.Create,
-        DepartmentPermission.Update,
-        DepartmentPermission.SoftDelete,
-      ],
-      matchExactPermission: true,
-      description: "You can manage and view the departments table here",
+      url: "/dashboard/profile",
+      icon: PersonOutlineOutlinedIcon,
+      description: "You can view your account details here",
     },
     {
-      id: "schedule-types",
-      title: "Schedule Types",
-      url: "/dashboard/schedule-types",
+      id: "settings",
+      title: "Settings",
       type: "item",
-      icon: ScheduleOutlinedIcon,
-      requiredPermission: [
-        ScheduleTypePermission.ViewMany,
-        ScheduleTypePermission.Create,
-        ScheduleTypePermission.Update,
-        ScheduleTypePermission.SoftDelete,
-      ],
-      matchExactPermission: true,
-      description: "You can manage and view the schedule types table here",
+      url: "/dashboard/settings",
+      icon: SettingsOutlinedIcon,
+      description: "You can view your account details here",
+    },
+  ],
+};
+
+const support: MenuGroup = {
+  id: "support",
+  title: "SUPPORT",
+  type: "group",
+  children: [
+    {
+      id: "docs",
+      title: "Docs",
+      type: "item",
+      url: "/dashboard/docs",
+      icon: InsertDriveFileOutlinedIcon,
+      description: "You can view your account details here",
     },
     {
-      id: "job-titles",
-      title: "Job Titles",
-      url: "/dashboard/job-titles",
+      id: "tickets",
+      title: "Tickets",
       type: "item",
-      icon: BadgeOutlinedIcon,
-      requiredPermission: [
-        JobTitlePermission.ViewMany,
-        JobTitlePermission.Create,
-        JobTitlePermission.Update,
-        JobTitlePermission.SoftDelete,
-      ],
-      matchExactPermission: true,
-      description: "You can manage and view the job titles table here",
+      url: "/dashboard/tickets",
+      icon: ConfirmationNumberOutlinedIcon,
+      description: "You can view your account details here",
     },
+  ],
+};
+
+const admin: MenuGroup = {
+  id: "admin",
+  title: "ADMIN",
+  type: "group",
+  children: [
     {
       id: "roles-and-permissions",
       title: "Roles and Permissions",
@@ -218,22 +191,6 @@ const manage: MenuGroup = {
   ],
 };
 
-const account: MenuGroup = {
-  id: "Account",
-  title: "Account",
-  type: "group",
-  children: [
-    {
-      id: "profile",
-      title: "Profile",
-      type: "item",
-      url: "/dashboard/profile",
-      icon: PersonOutlineOutlinedIcon,
-      description: "You can view your account details here",
-    },
-  ],
-};
-
 type Menu = MenuGroup[];
 
-export const menu: Menu = [dashboard, manage, account];
+export const menu: Menu = [dashboard, modules, account, support, admin];

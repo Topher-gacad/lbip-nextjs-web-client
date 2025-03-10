@@ -1,21 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { logInDevelopment } from "@/utils";
-import { responseSchema, TBaseResponse } from "@/schemas/json-response";
 import axiosInstance from "@/lib/axios/axios-instance";
-import { TRoleSchema } from "@/features/roles/schema/role";
+import { TEditRoleSchema } from "@/features/roles/schema/role";
+import { responseSchema, TBaseResponse } from "@/schemas/json-response";
 
-type UpdateRolesArg = {
-  rolesUpdateData: TRoleSchema;
-  id: string;
-};
-
-const updateRoles = async ({
-  rolesUpdateData,
+const updateRole = async ({
+  roleUpdateData,
   id,
-}: UpdateRolesArg): Promise<TBaseResponse> => {
+}: {
+  id: string;
+  roleUpdateData: TEditRoleSchema;
+}): Promise<TBaseResponse> => {
   const response = await axiosInstance.put<unknown>(
     `roles/${id}`,
-    rolesUpdateData
+    roleUpdateData
   );
 
   const validatedResponse = responseSchema.safeParse(response.data);
@@ -32,14 +31,17 @@ const updateRoles = async ({
   return validatedResponse.data;
 };
 
-export const useUpdateRolesMutation = () => {
+export const useUpdateRoleMutation = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<TBaseResponse, Error, UpdateRolesArg>({
-    mutationFn: updateRoles,
+  return useMutation<
+    TBaseResponse,
+    Error,
+    { roleUpdateData: TEditRoleSchema; id: string }
+  >({
+    mutationFn: updateRole,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["roles"], exact: false });
-      queryClient.refetchQueries({ queryKey: ["roles"], exact: false });
+      queryClient.invalidateQueries({ queryKey: ["roles"] });
     },
   });
 };

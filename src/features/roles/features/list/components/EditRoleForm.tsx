@@ -1,57 +1,54 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Box,
   Button,
-  //   Checkbox,
-  //   FormControlLabel,
+  Checkbox,
+  FormControlLabel,
   FormGroup,
-  //   FormHelperText,
-  //   Grid2,
+  FormHelperText,
+  Grid2,
   Paper,
   Stack,
   Typography,
 } from "@mui/material";
-// import {
-//   TRole,
-//   //   TEditRoleSchema,
-//   //   editRoleSchema,
-// } from "@/lib/zod/schemas/roles-and-permissions";
-// import { useGetPermissionsQuery } from "../api/useGetPermissionsQuery";
-// import { useUpdateRoleMutation } from "../api/useUpdateRoleMutation";
 import { enqueueSnackbar } from "notistack";
 import { useEffect } from "react";
-// import { groupBy } from "lodash";
+import { groupBy } from "lodash";
 import PermissionGuard from "@/features/auth/components/PermissionGuard";
 import { RolePermission } from "@/constant";
-import { RoleSchema, TRoleSchema } from "@/features/roles/schema/role";
-import { useUpdateRolesMutation } from "../hooks/useUpdateRolesMutation";
+import { useGetPermissionsQuery } from "../hooks/useGetPermissionsQuery";
+import { useUpdateRoleMutation } from "../hooks/useUpdateRolesMutation";
+import {
+  editRoleSchema,
+  TEditRoleSchema,
+  TRole,
+} from "@/features/roles/schema/role";
 
 type EditRoleFormProps = {
-  role: TRoleSchema;
-  onClose?: () => void;
+  role: TRole;
 };
 
 export default function EditRoleForm({ role }: EditRoleFormProps) {
-  //   const { data: permissionsData } = useGetPermissionsQuery();
-  //   const permissionsList = permissionsData?.data || [];
+  const { data: permissionsData } = useGetPermissionsQuery();
+  const permissionsList = permissionsData?.data || [];
 
-  const { mutate: updateRole, isPending } = useUpdateRolesMutation();
+  const { mutate: updateRole, isPending } = useUpdateRoleMutation();
 
-  //   const categorizedPermissions = groupBy(permissionsList, "category");
+  const categorizedPermissions = groupBy(permissionsList, "category");
 
   const {
     reset,
-    // control,
+    control,
     handleSubmit,
-    // formState: { errors },
-  } = useForm<TRoleSchema>({
-    resolver: zodResolver(RoleSchema),
+    formState: { errors },
+  } = useForm<TEditRoleSchema>({
+    resolver: zodResolver(editRoleSchema),
     defaultValues: {
       name: role.name,
-      //   permissions: role?.permissions?.map(permission => permission.name) || [],
+      permissions: role?.permissions?.map(permission => permission.name) || [],
     },
   });
 
@@ -59,15 +56,15 @@ export default function EditRoleForm({ role }: EditRoleFormProps) {
     if (role) {
       reset({
         name: role.name,
-        // permissions:
-        //   role?.permissions?.map(permission => permission.name) || [],
+        permissions:
+          role?.permissions?.map(permission => permission.name) || [],
       });
     }
   }, [role]);
 
-  const submitAction = (data: TRoleSchema) => {
+  const submitAction = (data: TEditRoleSchema) => {
     updateRole(
-      { rolesUpdateData: data, id: role.id as string },
+      { roleUpdateData: data, id: role.id },
       {
         onSuccess: response => {
           const message = response?.message || "Role updated successfully";
@@ -129,11 +126,11 @@ export default function EditRoleForm({ role }: EditRoleFormProps) {
               <Typography variant="h6">
                 Edit permission of this role below.
               </Typography>
-              {/* {errors.permissions && (
+              {errors.permissions && (
                 <Typography color="error">
                   {errors.permissions.message}
                 </Typography>
-              )} */}
+              )}
             </Box>
             <Box sx={{ alignContent: "center" }}>
               <PermissionGuard requiredPermissions={[RolePermission.Update]}>
@@ -156,7 +153,7 @@ export default function EditRoleForm({ role }: EditRoleFormProps) {
           elevation={0}
         >
           <FormGroup>
-            {/* <Grid2 container spacing={2}>
+            <Grid2 container spacing={2}>
               <Controller
                 name="permissions"
                 control={control}
@@ -231,7 +228,7 @@ export default function EditRoleForm({ role }: EditRoleFormProps) {
                   {errors.permissions.message}
                 </FormHelperText>
               )}
-            </Grid2> */}
+            </Grid2>
           </FormGroup>
         </Paper>
       </form>
