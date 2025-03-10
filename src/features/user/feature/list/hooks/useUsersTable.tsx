@@ -5,8 +5,9 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { Button, Typography } from "@mui/material";
-import { useGetUsersQuery } from "./useGetUserQuery";
+import { Typography } from "@mui/material";
+import { useGetUsersQuery } from "./useGetUsersQuery";
+import UsersTableActions from "../components/UsersTableActions";
 
 const columnHelper = createColumnHelper<TUserProfileSchema>();
 
@@ -76,8 +77,8 @@ export const useUsersTable = () => {
       enableSorting: false,
       size: 250, //size of column in px
       meta: {label: "Actions"},
-      cell: ({getValue}) => {
-        return <Button variant="contained" onClick={()=>{console.log(getValue())}}>View</Button>
+      cell: ({cell}) => {
+        return <UsersTableActions cell={cell}/>
       }
 
     }),

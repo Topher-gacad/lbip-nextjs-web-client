@@ -68,6 +68,7 @@ export const UserPermission = {
   Restore: "restore user",
   Import: "import user",
   Export: "export user",
+  ChangeOtherPassword: "change other user password",
 } as const;
 
 export const JobTitlePermission = {
