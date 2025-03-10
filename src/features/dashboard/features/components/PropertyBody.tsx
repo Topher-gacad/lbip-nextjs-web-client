@@ -1,6 +1,5 @@
 "use client";
 
-import { TRole } from "@/features/roles/schema/role";
 import {
   TableBody as MuiTableBody,
   TableCell as MuiTableCell,
@@ -8,12 +7,13 @@ import {
 } from "@mui/material";
 import { flexRender, Table } from "@tanstack/react-table";
 import { FixedSizeList as List } from "react-window";
+import { TProperty } from "../../schema/property";
 
 type TableBodyProps = {
-  table: Table<TRole>;
+  table: Table<TProperty>;
 };
 
-const RolesTableBody = ({ table }: TableBodyProps) => {
+const PropertyTableBody = ({ table }: TableBodyProps) => {
   const rows = table.getRowModel().rows;
 
   return (
@@ -40,7 +40,8 @@ const RolesTableBody = ({ table }: TableBodyProps) => {
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
-                    }}
+                      backgroundColor: "#FFFFFF",
+                     }}
                     key={cell.id}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -55,4 +56,4 @@ const RolesTableBody = ({ table }: TableBodyProps) => {
   );
 };
 
-export default RolesTableBody;
+export default PropertyTableBody;

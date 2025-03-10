@@ -6,7 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePostRoleFormMutation } from "../hooks/usePostRoleFormMutation";
 import { enqueueSnackbar } from "notistack";
-import { RoleSchema, TRoleSchema } from "@/features/roles/schema/role";
+import { roleSchema, TRole } from "@/features/roles/schema/role";
 
 const CreateRoleForm = () => {
   const {
@@ -14,8 +14,8 @@ const CreateRoleForm = () => {
     register,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<z.infer<typeof RoleSchema>>({
-    resolver: zodResolver(RoleSchema),
+  } = useForm<z.infer<typeof roleSchema>>({
+    resolver: zodResolver(roleSchema),
     defaultValues: { name: "" },
   });
 
@@ -25,10 +25,9 @@ const CreateRoleForm = () => {
 
   const { mutate: postRole, isPending: isPosting } = usePostRoleFormMutation();
 
-  const onSubmit = (data: TRoleSchema) => {
+  const onSubmit = (data: TRole) => {
     console.log(data);
-    const role = data.name as "super-admin" | "admin" | "manager" | "user";
-    postRole(role, {
+    postRole(data, {
       onSuccess: response => {
         const message = response?.message || "User created successfully";
         enqueueSnackbar(message, { variant: "success" });

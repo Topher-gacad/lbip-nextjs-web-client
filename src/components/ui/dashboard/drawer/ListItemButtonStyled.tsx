@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { ListItemButton, ListItemButtonProps } from "@mui/material";
+import { common } from "@mui/material/colors";
 
 type CustomListItemButtonProps = ListItemButtonProps & {
   isItem: boolean;
@@ -16,16 +17,19 @@ export const ListItemButtonStyled = styled(ListItemButton, {
         duration: "50ms",
       }),
     ],
-    borderRadius: 0,
+    borderRadius: 6,
+    marginLeft: theme.spacing(4), // Adjust margin here
+    marginRight: theme.spacing(4), // Adjust margin here
+    padding: 5,
     "&:hover": {
-      backgroundColor: theme.palette.primary.lighter,
-      color: theme.palette.primary.main,
+      backgroundColor: theme.palette.primary.main,
+      color: common.white,
     },
     ...(isSelectedItem
       ? {
           "&.Mui-selected, &.Mui-selected:hover": {
-            backgroundColor: theme.palette.primary.lighter,
-            color: theme.palette.primary.main,
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.common.white,
             borderRight: `2px solid ${theme.palette.primary.main}`,
           },
         }

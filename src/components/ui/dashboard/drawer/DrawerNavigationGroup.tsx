@@ -12,6 +12,7 @@ import { Fragment, useState } from "react";
 import { MenuGroup } from "@/constant/drawer-menu";
 import { ListItemButtonStyled } from "./ListItemButtonStyled";
 import { usePathname, useRouter } from "next/navigation";
+import theme from "@/lib/mui/theme";
 
 type DrawerNavigationGroupProps = {
   item: MenuGroup;
@@ -28,7 +29,14 @@ const DrawerNavigationGroup = ({ item }: DrawerNavigationGroupProps) => {
 
   return (
     <List>
-      <ListSubheader sx={{ position: "static", pl: 3, mb: 1.5 }}>
+      <ListSubheader
+        sx={{
+          position: "static",
+          pl: 5,
+          mb: 1,
+          bgcolor: theme.palette.common.black,
+        }}
+      >
         <Typography variant="subtitle2" color="textSecondary">
           {item?.title}
         </Typography>
@@ -50,7 +58,7 @@ const DrawerNavigationGroup = ({ item }: DrawerNavigationGroupProps) => {
           return (
             <Fragment key={child.id}>
               <ListItemButtonStyled
-                sx={{ pl: 3 }}
+                sx={{ pl: 2, color: theme.palette.common.white }}
                 onClick={() => {
                   if (isCollapsed) {
                     handleNestedLinkToggle(index);
@@ -95,7 +103,7 @@ const DrawerNavigationGroup = ({ item }: DrawerNavigationGroupProps) => {
                     child.children.map(innerChild => {
                       return (
                         <ListItemButtonStyled
-                          sx={{ pl: 3 }}
+                          sx={{ pl: 4, color: theme.palette.common.white }}
                           key={innerChild.id}
                           onClick={() => {
                             if (innerChild.url) {

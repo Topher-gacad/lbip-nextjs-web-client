@@ -163,6 +163,8 @@ const colors = {
     "#820014",
     "#5c0011",
   ],
+  silver: ["#deae66"],
+
   grey: [...greyPrimary, ...greyAscent, ...greyConstant],
 };
 
@@ -181,5 +183,6 @@ export const {
   orange,
   volcano,
   red,
-  grey
+  grey,
+  silver,
 } = colors;

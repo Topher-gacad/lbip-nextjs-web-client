@@ -1,7 +1,10 @@
-"use client";
+import PropertyTable from "@/features/dashboard/features/components/PropertyTable";
 
-const DashboardPage = () => {
-  return <p>dashboard page</p>;
+const Metric = () => {
+  return (
+    <div>
+      <PropertyTable />
+    </div>
+  );
 };
-
-export default DashboardPage;
+export default Metric;
