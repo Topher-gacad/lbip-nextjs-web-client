@@ -21,6 +21,7 @@ const UsersTableHeader = <T,>({ table }: PUsersTableHeader<T>) => {
           display: "grid",
           top: 0,
           zIndex: theme.zIndex.appBar - 1,
+          px: 2,
         };
       }}
     >
@@ -29,7 +30,7 @@ const UsersTableHeader = <T,>({ table }: PUsersTableHeader<T>) => {
           <MuiTableRow
             component="div"
             key={headerGroup.id}
-            sx={{ display: "flex", width: "100%" }}
+            sx={{ display: "flex", width: "100%"}}
           >
             {headerGroup.headers.map(header => {
               return <UsersTableHead header={header} key={header.id} />;
