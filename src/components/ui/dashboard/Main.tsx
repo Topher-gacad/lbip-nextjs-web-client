@@ -1,10 +1,10 @@
 import { styled } from "@mui/material";
 import { drawerWidth } from "./drawer/Drawer";
-import { common } from "@mui/material/colors";
 
 const Main = styled("main", { shouldForwardProp: prop => prop !== "open" })<{
   open?: boolean;
 }>(({ theme }) => ({
+  height: "100vh",
   flexGrow: 1,
   overflowX: "hidden",
   paddingBlock: theme.spacing(3),

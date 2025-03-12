@@ -41,11 +41,11 @@ const PersonalUserInformation = ({ user }: PPersonalUserInformation) => {
   } = useForm<TEditProfileSchema>({
     resolver: zodResolver(EditProfileSchema),
     defaultValues: {
-        first_name: user?.profile?.first_name,
-        middle_name: user?.profile?.middle_name,
-        last_name: user?.profile?.last_name,
-        gender: user?.profile?.gender,
-        contact_num: user?.profile?.contact_num,
+      first_name: user?.profile?.first_name,
+      middle_name: user?.profile?.middle_name,
+      last_name: user?.profile?.last_name,
+      gender: user?.profile?.gender,
+      contact_number: user?.profile?.contact_number,
     },
   });
 
@@ -53,7 +53,7 @@ const PersonalUserInformation = ({ user }: PPersonalUserInformation) => {
   const onSubmit = (data: TEditProfileSchema) => {
     const dirtyData = getDirtyFields(data, dirtyFields);
 
-    if(user.id){
+    if (user.id) {
       updateProfile(
         { id: user.id, userUpdateData: dirtyData },
         {
@@ -179,16 +179,16 @@ const PersonalUserInformation = ({ user }: PPersonalUserInformation) => {
           </Grid2>
 
           <Grid2 size={{ xs: 12, md: 6 }}>
-            <FormLabel sx={{ fontSize: 12 }} htmlFor="contact_num">
+            <FormLabel sx={{ fontSize: 12 }} htmlFor="contact_number">
               Contact Number
             </FormLabel>
             <TextField
-              id="contact_num"
-              {...register("contact_num")}
+              id="contact_number"
+              {...register("contact_number")}
               slotProps={{ input: { readOnly: !isEditing } }}
               fullWidth
-              error={!!errors.contact_num}
-              helperText={errors.contact_num?.message}
+              error={!!errors.contact_number}
+              helperText={errors.contact_number?.message}
             />
           </Grid2>
         </Grid2>

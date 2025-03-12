@@ -1,11 +1,12 @@
 import { createTheme } from "@mui/material/styles";
 
 import { paletteOptions } from "./palette";
-import { typographyOptions } from "./typography";
+
 import { customShadows } from "./shadows";
 import componentOverrides from "./overrides";
 
 import "@mui/material/styles";
+import { typographyOptions } from "./typography";
 
 declare module "@mui/material/styles" {
   interface Theme {

@@ -27,7 +27,7 @@ export const baseProfileSchema = z.object({
   middle_name: z.string().nullable().optional(),
   last_name: z.string(),
   gender: z.string().nullable().optional(),
-  contact_num: z.string().nullable().optional(),
+  contact_number: z.string().nullable().optional(),
   user_id: z.string(),
   deleted_at: z.string().nullable().optional(),
   created_at: z.string().nullable().optional(),
@@ -49,4 +49,3 @@ export const baseUserSchema = z.object({
   roles: z.array(baseRoleSchema).nullable().optional(),
   permissions: z.array(basePermissionSchema).nullable().optional(),
 });
-

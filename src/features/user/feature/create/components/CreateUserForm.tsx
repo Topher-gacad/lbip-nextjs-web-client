@@ -17,6 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { enqueueSnackbar } from "notistack";
 import { usePostUserMutation } from "../hooks/usePostUserMutation";
+import RoleAutoComplete from "./RoleAutoComplete";
 
 const CreateUserForm = () => {
   const {
@@ -34,7 +35,7 @@ const CreateUserForm = () => {
       first_name: "",
       middle_name: null,
       last_name: "",
-      contact_num: "",
+      contact_number: "",
     },
   });
 
@@ -127,11 +128,18 @@ const CreateUserForm = () => {
         fullWidth
       />
 
+      <Grid2 size={{ xs: 12, md: 6 }}>
+        <FormLabel sx={{ fontSize: 12 }} htmlFor="roles">
+          Roles*
+        </FormLabel>
+        <RoleAutoComplete control={control} />
+      </Grid2>
+
       <TextField
         label="Contact Number"
-        {...register("contact_num")}
-        error={!!errors.contact_num}
-        helperText={errors.contact_num?.message}
+        {...register("contact_number")}
+        error={!!errors.contact_number}
+        helperText={errors.contact_number?.message}
         disabled={isSubmitting}
         fullWidth
       />

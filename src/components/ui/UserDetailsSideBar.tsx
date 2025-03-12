@@ -67,6 +67,10 @@ const UserDetailsSideBar = ({ userId, links }: PUserDetailsSideBar) => {
                 ? `${user?.profile.first_name} ${user?.profile.last_name}`
                 : ""}
             </Typography>
+
+            <Typography variant="h6" color="secondary">
+              {user?.roles?.map(role => role.name).join(', ') || ""}
+            </Typography>
           </Box>
         </Box>
         <Divider />
@@ -93,17 +97,17 @@ const UserDetailsSideBar = ({ userId, links }: PUserDetailsSideBar) => {
                   "&:hover": {
                     backgroundColor: theme => theme.palette.primary.lighter,
                     "& *": {
-                      color: theme => theme.palette.primary.main,
+                      color: theme => theme.palette.common.black,
                     },
                   },
                   color:
                     pathname === link.href
-                      ? theme => theme.palette.primary.main
+                      ? theme => theme.palette.common.black
                       : "black",
                   "& *": {
                     color:
                       pathname === link.href
-                        ? theme => theme.palette.primary.main
+                        ? theme => theme.palette.common.black
                         : "black",
                   },
                 }}
