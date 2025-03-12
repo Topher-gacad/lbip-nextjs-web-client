@@ -8,7 +8,7 @@ const TestPage = () => {
         profile: {
           first_name: "john doe",
           last_name: "doe",
-          contact_num: "09234234",
+          contact_number: "09234234",
         },
       }}
     />

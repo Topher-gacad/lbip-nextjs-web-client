@@ -163,7 +163,18 @@ const colors = {
     "#820014",
     "#5c0011",
   ],
-  silver: ["#deae66"],
+  goldenYellow: [
+    "#deae66", 
+    "#f6e9d5", 
+    "#ffecb3",
+    "#ffe082",
+    "#ffd54f",
+    "#ffca28",
+    "#c99b5c",
+    "#b38752",
+    "#996f47",
+    "#7a573a", 
+  ],
 
   grey: [...greyPrimary, ...greyAscent, ...greyConstant],
 };
@@ -184,5 +195,5 @@ export const {
   volcano,
   red,
   grey,
-  silver,
+  goldenYellow,
 } = colors;

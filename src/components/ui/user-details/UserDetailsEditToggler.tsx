@@ -12,8 +12,7 @@ const UserDetailsEditToggler = () => {
       <Paper
         sx={{
           border: theme => `1px solid ${theme.palette.divider}`,
-          px: 1.5,
-          py: 0.5,
+          p: 1.5
         }}
         elevation={0}
       >
@@ -22,7 +21,7 @@ const UserDetailsEditToggler = () => {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="h6">Edit Mode</Typography>
+          <Typography variant="h6" fontWeight="600">Edit Mode</Typography>
 
           <Tooltip title="Enable edit" arrow>
             <Switch checked={isEditing} onChange={toggleEditing} />

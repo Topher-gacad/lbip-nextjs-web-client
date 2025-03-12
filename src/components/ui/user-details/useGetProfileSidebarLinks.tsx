@@ -30,7 +30,7 @@ const useGetProfileSidebarLinks = (userId: string) => {
         {
           href: `/dashboard/users/${userId}/change-password`,
           label: "Change Password",
-          icon: <LockOutlinedIcon />,
+          icon: <LockOutlinedIcon/>,
           //   requiredPermission: [UserPermission.ChangeOtherPassword],
           requiredPermission: [],
         },

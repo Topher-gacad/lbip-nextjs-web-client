@@ -1,5 +1,5 @@
 import { basePermissionSchema, baseRoleSchema } from "@/schemas/base";
-import { responseSchema } from "@/schemas/json-response";
+import { apiPaginatedResponseSchema, responseSchema } from "@/schemas/json-response";
 import { z } from "zod";
 
 export type TCreateRoleSchema = z.infer<typeof createRoleSchema>;
@@ -27,7 +27,7 @@ export type TRolesPaginatedResponseSchema = z.infer<
   typeof rolesPaginatedResponseSchema
 >;
 export const rolesPaginatedResponseSchema = responseSchema.extend({
-  data: z.array(roleSchema),
+  data: apiPaginatedResponseSchema.extend({ data: z.array(roleSchema) }),
 });
 
 export type TPermission = z.infer<typeof PermissionSchema>;

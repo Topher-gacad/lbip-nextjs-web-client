@@ -2,7 +2,7 @@ import { TypographyOptions } from "@mui/material/styles/createTypography";
 
 export const typographyOptions: TypographyOptions = {
   htmlFontSize: 16,
-  fontFamily: `'Montserrat'`,
+  fontFamily: 'Montserrat, sans-serif',
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,

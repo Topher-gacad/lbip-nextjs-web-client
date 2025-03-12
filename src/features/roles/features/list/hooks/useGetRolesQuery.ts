@@ -21,7 +21,25 @@ const fetchRoles = async (): Promise<TRolesPaginatedResponseSchema> => {
     logInDevelopment(validatedResponse.error.message);
 
     return {
-      data: [],
+      data: {
+        data: [],
+        links: {
+          first: "",
+          last: "",
+          prev: null,
+          next: null
+        },
+        meta: {
+          path: "",
+          links: [],
+          current_page: 0,
+          from: null,
+          last_page: 0,
+          per_page: 0,
+          to: null,
+          total: 0
+        },
+      },
       success: false,
       message: "Parse error. Invalid response format",
     };

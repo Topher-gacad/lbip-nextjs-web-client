@@ -20,7 +20,7 @@ export const useUsersTable = () => {
       header: "Email",
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "Email"},
+      meta: { label: "Email" },
       // cell: ({ getValue }) => {
       //   return <button>{getValue()}</button>;
       // },
@@ -31,8 +31,7 @@ export const useUsersTable = () => {
       header: "First Name",
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "First name"},
-
+      meta: { label: "First name" },
     }),
 
     columnHelper.accessor("profile.middle_name", {
@@ -40,8 +39,7 @@ export const useUsersTable = () => {
       header: "Middle Name",
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "Middle name"},
-
+      meta: { label: "Middle name" },
     }),
 
     columnHelper.accessor("profile.last_name", {
@@ -49,40 +47,35 @@ export const useUsersTable = () => {
       header: "Last Name",
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "Last name"},
-
+      meta: { label: "Last name" },
     }),
 
-    columnHelper.accessor("profile.contact_num", {
-      id: "contact_num",
+    columnHelper.accessor("profile.contact_number", {
+      id: "contact_number",
       header: "Contact Number",
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "Contact number"},
-
+      meta: { label: "Contact number" },
     }),
     columnHelper.accessor("created_at", {
       id: "created_at",
       header: "Created At",
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "Created at"},
-
+      meta: { label: "Created at" },
     }),
     columnHelper.accessor("id", {
       id: "id",
-      header: ()=>{
-        return <Typography>Actions</Typography>
+      header: () => {
+        return <Typography>Actions</Typography>;
       },
       enableSorting: false,
       size: 250, //size of column in px
-      meta: {label: "Actions"},
-      cell: ({cell}) => {
-        return <UsersTableActions cell={cell}/>
-      }
-
+      meta: { label: "Actions" },
+      cell: ({ cell }) => {
+        return <UsersTableActions cell={cell} />;
+      },
     }),
-    
   ];
 
   const table = useReactTable({

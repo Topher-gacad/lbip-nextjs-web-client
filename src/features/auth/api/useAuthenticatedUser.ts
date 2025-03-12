@@ -18,7 +18,7 @@ export const emptyAuth = {
     middle_name: null,
     last_name: "",
     hourly_rate: 0,
-    contact_num: "",
+    contact_number: "",
     user_id: "",
     department_id: "",
     job_title_id: "",
@@ -40,7 +40,9 @@ const getAuthenticatedUser = async (): Promise<AuthResponse> => {
   const validatedResponse = authResponseSchema.safeParse(response.data);
 
   if (!validatedResponse.success) {
-    logInDevelopment(`useGetAuthenticated user : ${validatedResponse.error.message}`);
+    logInDevelopment(
+      `useGetAuthenticated user : ${validatedResponse.error.message}`
+    );
 
     return {
       success: false,

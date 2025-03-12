@@ -1,4 +1,3 @@
-
 import {
   apiPaginatedResponseSchema,
   responseSchema,
@@ -60,7 +59,7 @@ export const ProfileSchema = z.object({
       /^[a-zA-ZñÑáéíóúüÁÉÍÓÚÜ .]+$/,
       "Last name can only contain letters, spaces, and periods."
     ),
-  contact_num: z.string().min(1, "Contact number is required"),
+  contact_number: z.string().min(1, "Contact number is required"),
 
   gender: z.string().optional().nullable(),
   deleted_at: z.string().nullable().optional(),
@@ -123,7 +122,7 @@ export const EditProfileSchema = ProfileSchema.pick({
   middle_name: true,
   last_name: true,
   gender: true,
-  contact_num: true,
+  contact_number: true,
 });
 
 export type TEditUserPasswordSchema = z.infer<typeof EditUserPasswordSchema>;

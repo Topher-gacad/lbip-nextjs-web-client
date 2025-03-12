@@ -10,7 +10,7 @@ import { TRole } from "@/features/roles/schema/role";
 const columnHelper = createColumnHelper<TRole>();
 
 export const useRolesTable = () => {
-  const { data = { data: [] } } = useGetRolesQuery();
+  const { data = { data: { data: [] } } } = useGetRolesQuery();
 
   const columns = [
     columnHelper.accessor("name", {
@@ -47,7 +47,7 @@ export const useRolesTable = () => {
   ];
 
   const table = useReactTable({
-    data: data.data,
+    data: data.data.data,
     columns: columns,
     getCoreRowModel: getCoreRowModel(),
     manualSorting: true,
