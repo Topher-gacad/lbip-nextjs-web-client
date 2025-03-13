@@ -4,8 +4,7 @@ import { Control } from "react-hook-form";
 
 import CustomAutoComplete from "@/components/ui/CustomAutocomplete";
 import { TEditUserAccountSchema } from "@/features/user/schema/user";
-import { useGetRolesQuery } from "@/features/roles/features/list/hooks/useGetRolesQuery";
-
+import { useGetRoleQuery } from "@/features/roles/features/list/hooks/useGetRoleQuery";
 
 const EditRoleAutocomplete = ({
   control,
@@ -16,7 +15,7 @@ const EditRoleAutocomplete = ({
     data: { data: roles } = { data: [] },
     isLoading,
     isError,
-  } = useGetRolesQuery({ searchKey: ""});
+  } = useGetRoleQuery({ searchKey: "" });
 
   return (
     <CustomAutoComplete

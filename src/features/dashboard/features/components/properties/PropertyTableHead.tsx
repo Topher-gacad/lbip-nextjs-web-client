@@ -20,14 +20,17 @@ const PropertyTableHead = <T,>({ header }: PRoleTableHead<T>) => {
 
   return (
     <MuiTableCell
-      sx={{ width: header.getSize(), backgroundColor: "#FFFFFF" }}
+      sx={{
+        width: header.getSize(),
+        backgroundColor: "#FEFEFE",
+      }}
       component="div"
     >
       {header.isPlaceholder ? null : (
         <Stack
           sx={{
             width: "100%",
-            gap: 1,
+            gap: 2,
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -43,7 +46,7 @@ const PropertyTableHead = <T,>({ header }: PRoleTableHead<T>) => {
               justifyContent: "space-between",
             }}
           >
-            <Stack sx={{ flexDirection: "row", gap: 1, alignItems: "center" }}>
+            <Stack sx={{ flexDirection: "row", gap: 2, alignItems: "center" }}>
               <Typography
                 variant="subtitle1"
                 sx={{

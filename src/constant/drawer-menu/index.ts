@@ -3,7 +3,6 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import { SvgIconProps } from "@mui/material";
 import { ComponentType } from "react";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { RolePermission, UserPermission } from "@/constant/permissions";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";

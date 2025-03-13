@@ -20,7 +20,7 @@ export const usePropertyTable = () => {
       id: "property",
       header: "Property",
       enableSorting: false,
-      size: 250,
+      size: 280,
       meta: { label: "Property" },
     }),
 
@@ -28,7 +28,7 @@ export const usePropertyTable = () => {
       id: "space",
       header: "Space",
       enableSorting: false,
-      size: 100,
+      size: 280,
       meta: { label: "Space" },
     }),
 
@@ -36,7 +36,7 @@ export const usePropertyTable = () => {
       id: "ticket",
       header: "Ticket",
       enableSorting: false,
-      size: 100,
+      size: 280,
       meta: { label: "ticket" },
     }),
 
@@ -44,7 +44,7 @@ export const usePropertyTable = () => {
       id: "action",
       header: "Action",
       enableSorting: false,
-      size: 100,
+      size: 84,
       meta: { label: "action" },
     }),
 
@@ -52,8 +52,8 @@ export const usePropertyTable = () => {
       id: "type",
       header: "Type",
       enableSorting: false,
-      size: 100,
-      meta: { label: "type" },
+      size: 80,
+      meta: { label: "type", isHidden: true },
     }),
   ];
 
@@ -61,6 +61,11 @@ export const usePropertyTable = () => {
     data: tableData,
     columns: columns,
     getCoreRowModel: getCoreRowModel(),
+    state: {
+      columnVisibility: {
+        type: false, // Hide "type" column from the UI
+      },
+    },
     manualSorting: true,
     manualFiltering: true,
     manualPagination: true,
