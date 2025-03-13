@@ -11,11 +11,14 @@ import {
   Stack,
   TableCell as MuiTableCell,
   Typography,
+  TextField,
 } from "@mui/material";
 import { Fragment, useState } from "react";
 import { flexRender, Header } from "@tanstack/react-table";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
+import { useUsersTableStore } from "../hooks/useUsersTableStore";
+import { useDebouncedCallback } from "use-debounce";
 
 type PUserTableHead<T> = {
   header: Header<T, unknown>;
@@ -23,11 +26,36 @@ type PUserTableHead<T> = {
 
 const UsersTableHead = <T,>({ header }: PUserTableHead<T>) => {
 
+  const columnFilters = useUsersTableStore(state => state.columnFilters);
+  const setColumnFilters = useUsersTableStore(state => state.setColumnFilters);
+  const resetPageIndex = useUsersTableStore(state => state.resetPageIndex);
 
   const canPin = header.getContext().column.getCanPin();
   const isPinned = header.column.getIsPinned();
+  const canFilter = header.getContext().column.getCanFilter();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const [filterValue, setFilterValue] = useState(
+    columnFilters.find(item => item.id === header.column.id)?.value ?? ""
+  );
+const handleFilterDebounced = useDebouncedCallback((value: string) => {
+    setColumnFilters(prev => {
+      const newFilters = prev.filter(f => f.id !== header.column.id);
+      if (value) {
+        newFilters.push({ id: header.column.id, value });
+      }
+      return newFilters;
+    });
+
+    resetPageIndex();
+  }, 1000);
+
+  const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setFilterValue(newValue);
+    handleFilterDebounced(newValue);
+  };
 
   return (
     <MuiTableCell sx={{ width: header.getSize() }} component="div">
@@ -122,15 +150,15 @@ const UsersTableHead = <T,>({ header }: PUserTableHead<T>) => {
               </Fragment>
             )}
           </Stack>
-          {/* {canFilter && (
-            // <TextField
-            //   onChange={handleFilterChange}
-            //   value={filterValue}
-            //   size="small"
-            //   placeholder="Search..."
-            //   fullWidth
-            // />
-          )} */}
+          {canFilter && (
+            <TextField
+              onChange={handleFilterChange}
+              value={filterValue}
+              size="small"
+              placeholder="Search..."
+              fullWidth
+            />
+          )}
         </Stack>
       )}
     </MuiTableCell>

@@ -15,7 +15,7 @@ const RoleAutocomplete = ({
     data: { data: { data: roles } } = { data: { data: [] } },
     isLoading,
     isError,
-  } = useGetRolesQuery({ searchKey: "" });
+  } = useGetRolesQuery();
 
   return (
     <CustomAutoComplete

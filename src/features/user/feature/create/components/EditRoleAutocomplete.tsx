@@ -12,9 +12,10 @@ const EditRoleAutocomplete = ({
   control: Control<TEditUserAccountSchema>;
 }) => {
   const {
-    data: { data: roles } = { data: [] },
+    data: { data: {data: roles} } = { data: {data: []} },
     isLoading,
     isError,
+
   } = useGetRoleQuery({ searchKey: "" });
 
   return (
