@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { flexRender, Table } from "@tanstack/react-table";
 import { FixedSizeList as List } from "react-window";
-import { TProperty } from "../../schema/property";
+import { TProperty } from "../../../schema/property";
 
 type TableBodyProps = {
   table: Table<TProperty>;
@@ -18,7 +18,7 @@ const PropertyTableBody = ({ table }: TableBodyProps) => {
 
   return (
     <MuiTableBody component="div">
-      <List height={600} itemCount={rows.length} itemSize={60} width={"100%"}>
+      <List height={300} itemCount={rows.length} itemSize={60} width={"100%"}>
         {({ index, style }) => {
           const row = rows[index];
           const cells = row.getVisibleCells();
@@ -40,8 +40,9 @@ const PropertyTableBody = ({ table }: TableBodyProps) => {
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
-                      backgroundColor: "#FFFFFF",
-                     }}
+                      backgroundColor: "#fefefe",
+                      borderRadius: 15,
+                    }}
                     key={cell.id}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

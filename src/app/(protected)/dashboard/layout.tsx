@@ -25,7 +25,7 @@ const DashboardLayout = ({ children }: RouteLayout) => {
       <Main open={open || !isDesktopScreen}>
         <Toolbar />
         <CustomBreadcrumbs />
-        <Container maxWidth="xl">
+        <Container maxWidth="xxl">
           <Box>{children}</Box>
         </Container>
       </Main>

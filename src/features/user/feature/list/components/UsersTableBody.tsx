@@ -17,10 +17,14 @@ const UsersTableBody = ({ table }: TableBodyProps) => {
   const rows = table.getRowModel().rows;
 
   return (
-    <MuiTableBody component="div" sx={{ 
+
+    <MuiTableBody
+      component="div"
+      sx={{
         color: "#1E1E1E",
-        px: 2,
-     }}>
+      }}
+    >
+
       <List height={600} itemCount={rows.length} itemSize={60} width={"100%"}>
         {({ index, style }) => {
           const row = rows[index];

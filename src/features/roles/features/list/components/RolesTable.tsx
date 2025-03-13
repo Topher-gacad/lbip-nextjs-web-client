@@ -10,7 +10,6 @@ import { useRolesTable } from "../hooks/useRolesTable";
 import RolesTableBody from "./RolesTableBody";
 import RolesTableHeader from "./RolesTableHeader";
 
-
 const RolesTable = () => {
   const { table } = useRolesTable();
 
@@ -19,7 +18,11 @@ const RolesTable = () => {
       <Stack>
         <Typography variant="h3">Roles Table</Typography>
         <MuiTableContainer
-          sx={{ overflow: "auto", position: "relative", height: 715 }}
+          sx={{
+            overflow: "auto",
+            position: "relative",
+            height: 715,
+          }}
         >
           <MuiTable sx={{ display: "grid" }} component="div">
             <RolesTableHeader table={table} />

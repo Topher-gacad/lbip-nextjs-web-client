@@ -40,6 +40,7 @@ const RolesTableBody = ({ table }: TableBodyProps) => {
                       overflow: "hidden",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
+                      bgcolor: "#FEFEFE",
                     }}
                     key={cell.id}
                   >

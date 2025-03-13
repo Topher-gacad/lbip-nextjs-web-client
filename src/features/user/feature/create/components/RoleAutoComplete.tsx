@@ -12,11 +12,10 @@ const RoleAutocomplete = ({
   control: Control<TCreateUserProfileSchema>;
 }) => {
   const {
-    data: { data: {data: roles} } = { data: {data: []} },
+    data: { data: { data: roles } } = { data: { data: [] } },
     isLoading,
     isError,
   } = useGetRolesQuery();
-
 
   return (
     <CustomAutoComplete
