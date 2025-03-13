@@ -2,11 +2,15 @@
 
 import {
   Autocomplete,
+  Box,
   Button,
+  Divider,
   FormLabel,
   Grid2,
+  Paper,
   Stack,
   TextField,
+  Typography,
 } from "@mui/material";
 
 import {
@@ -25,7 +29,7 @@ const CreateUserForm = () => {
     reset,
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
   } = useForm<TCreateUserProfileSchema>({
     resolver: zodResolver(CreateUserProfileSchema),
     defaultValues: {
@@ -58,114 +62,215 @@ const CreateUserForm = () => {
   };
 
   return (
-    <Stack component="form" onSubmit={handleSubmit(onSubmit)} sx={{ gap: 1 }}>
-      <TextField
-        label="First name"
-        {...register("first_name")}
-        error={!!errors.first_name}
-        helperText={errors.first_name?.message}
-        disabled={isSubmitting}
-        fullWidth
-      />
-      <TextField
-        label="Middle name"
-        {...register("middle_name")}
-        error={!!errors.middle_name}
-        helperText={errors.middle_name?.message}
-        disabled={isSubmitting}
-        fullWidth
-      />
+    <Stack sx={{ gap: 2 }}>
+      <Box>
+        <Typography variant="h3">Create New User</Typography>
+        <Typography variant="body1">
+          Please provide the required information in the spaces provided below
+        </Typography>
+      </Box>
 
-      <TextField
-        label="Last Name"
-        {...register("last_name")}
-        error={!!errors.last_name}
-        helperText={errors.last_name?.message}
-        disabled={isSubmitting}
-        fullWidth
-        size="medium"
-      />
+      <Paper
+        sx={{
+          p: 3,
+          border: theme => `1px solid ${theme.palette.divider}`,
+          borderRadius: "15px",
+        }}
+        elevation={0}
+      >
+        <Stack>
+          <Typography variant="h5">Personal Information</Typography>
+        </Stack>
 
-      <Grid2 size={{ xs: 12, md: 6 }}>
-        <FormLabel sx={{ fontSize: 12 }} htmlFor="gender">
-          Gender*
-        </FormLabel>
-        <Controller
-          control={control}
-          name="gender"
-          render={({ field, fieldState: { error } }) => (
-            <Autocomplete
-              id="gender"
-              {...field}
-              options={["male", "female"]}
-              value={field.value || ""}
-              onChange={(event, newValue) => field.onChange(newValue)}
-              disablePortal
-              renderInput={params => (
+        <Divider />
+        <Box
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+          sx={{ gap: 1, mt: 2 }}
+        >
+          <Grid2 container spacing={2} sx={{ mb: 5 }}>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <FormLabel sx={{ fontSize: 12 }} htmlFor="first_name">
+                First Name *
+              </FormLabel>
+              <TextField
+                id="first_name"
+                {...register("first_name")}
+                error={!!errors.first_name}
+                helperText={errors.first_name?.message}
+                disabled={isSubmitting}
+                fullWidth
+              />
+            </Grid2>
+
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <FormLabel sx={{ fontSize: 12 }} htmlFor="middle_name">
+                Middle Name*
+              </FormLabel>
+              <TextField
+                id="middle_name"
+                {...register("middle_name")}
+                name="middle_name"
+                error={!!errors.middle_name}
+                helperText={errors.middle_name?.message}
+                disabled={isSubmitting}
+                fullWidth
+              />
+            </Grid2>
+
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <FormLabel sx={{ fontSize: 12 }} htmlFor="last_name">
+                Last Name*
+              </FormLabel>
+              <TextField
+                id="last_name"
+                {...register("last_name")}
+                error={!!errors.last_name}
+                helperText={errors.last_name?.message}
+                disabled={isSubmitting}
+                fullWidth
+                size="medium"
+              />
+            </Grid2>
+
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <FormLabel sx={{ fontSize: 12 }} htmlFor="gender">
+                Gender*
+              </FormLabel>
+              <Controller
+                control={control}
+                name="gender"
+                render={({ field, fieldState: { error } }) => (
+                  <Autocomplete
+                    id="gender"
+                    {...field}
+                    options={["male", "female"]}
+                    value={field.value || ""}
+                    onChange={(event, newValue) => field.onChange(newValue)}
+                    disablePortal
+                    renderInput={params => (
+                      <TextField
+                        {...params}
+                        error={!!error}
+                        helperText={error?.message}
+                        size="small"
+                        sx={{
+                          "& .MuiInputBase-root": {
+                            height: "41px",
+                          },
+                        }}
+                      />
+                    )}
+                  />
+                )}
+              />
+            </Grid2>
+
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <FormLabel sx={{ fontSize: 12 }} htmlFor="contact_number">
+                Contact Number *
+              </FormLabel>
+
+              <TextField
+                id="contact_number"
+                {...register("contact_number")}
+                error={!!errors.contact_number}
+                helperText={errors.contact_number?.message}
+                disabled={isSubmitting}
+                fullWidth
+              />
+            </Grid2>
+          </Grid2>
+
+          <Box>
+            <Typography variant="h5">Account Information</Typography>
+            <Divider sx={{ mb: 2 }} />
+            <Grid2 container spacing={2}>
+              <Grid2 size={{ xs: 12, md: 6 }}>
+                <FormLabel sx={{ fontSize: 12 }} htmlFor="email">
+                  Email *
+                </FormLabel>
                 <TextField
-                  {...params}
-                  error={!!error}
-                  helperText={error?.message}
-                  size="small"
-                  sx={{
-                    "& .MuiInputBase-root": {
-                      height: "34px",
-                    },
-                  }}
+                  id="email"
+                  type="email"
+                  {...register("email")}
+                  error={!!errors.email}
+                  helperText={errors.email?.message}
+                  disabled={isSubmitting}
+                  fullWidth
                 />
-              )}
-            />
-          )}
-        />
-      </Grid2>
-      <TextField
-        type="email"
-        label="Email"
-        {...register("email")}
-        error={!!errors.email}
-        helperText={errors.email?.message}
-        disabled={isSubmitting}
-        fullWidth
-      />
+              </Grid2>
 
-      <Grid2 size={{ xs: 12, md: 6 }}>
-        <FormLabel sx={{ fontSize: 12 }} htmlFor="roles">
-          Roles*
-        </FormLabel>
-        <RoleAutoComplete control={control} />
-      </Grid2>
+              <Grid2 size={{ xs: 12, md: 6 }}>
+                <FormLabel sx={{ fontSize: 12 }} htmlFor="roles">
+                  Roles*
+                </FormLabel>
+                <RoleAutoComplete control={control} />
+              </Grid2>
 
-      <TextField
-        label="Contact Number"
-        {...register("contact_number")}
-        error={!!errors.contact_number}
-        helperText={errors.contact_number?.message}
-        disabled={isSubmitting}
-        fullWidth
-      />
-      <TextField
-        type="password"
-        label="Password"
-        {...register("password")}
-        error={!!errors.password}
-        helperText={errors.password?.message}
-        disabled={isSubmitting}
-        fullWidth
-      />
+              <Grid2 size={{ xs: 12, md: 6 }}>
+                <FormLabel sx={{ fontSize: 12 }} htmlFor="email">
+                  Password *
+                </FormLabel>
 
-      <TextField
-        type="password"
-        label="Confirm Password"
-        {...register("password_confirmation")}
-        error={!!errors.password_confirmation}
-        helperText={errors.password_confirmation?.message}
-        disabled={isSubmitting}
-        fullWidth
-      />
+                <TextField
+                  type="password"
+                  {...register("password")}
+                  error={!!errors.password}
+                  helperText={errors.password?.message}
+                  disabled={isSubmitting}
+                  fullWidth
+                />
+              </Grid2>
 
-      <Button type="submit" disabled={isPosting}>
-        Submit
-      </Button>
+              <Grid2 size={{ xs: 12, md: 6 }}>
+                <FormLabel sx={{ fontSize: 12 }} htmlFor="roles">
+                  Confirm Password *
+                </FormLabel>
+
+                <TextField
+                  type="password"
+                  {...register("password_confirmation")}
+                  error={!!errors.password_confirmation}
+                  helperText={errors.password_confirmation?.message}
+                  disabled={isSubmitting}
+                  fullWidth
+                />
+              </Grid2>
+            </Grid2>
+          </Box>
+
+          <Stack
+            sx={{
+              mt: 5,
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              gap: 2,
+            }}
+          >
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => {
+                if (isDirty) {
+                  reset();
+                }
+              }}
+              disabled={!isDirty}
+            >
+              Clear form
+            </Button>
+
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={!isDirty || isSubmitting || isPosting}
+            >
+              Submit
+            </Button>
+          </Stack>
+        </Box>
+      </Paper>
     </Stack>
   );
 };
