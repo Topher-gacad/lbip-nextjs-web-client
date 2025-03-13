@@ -3,13 +3,13 @@ import {
   TableHead as MuiTableHead,
   TableRow as MuiTableRow,
 } from "@mui/material";
-import PropertyTableHead from "./PropertyTableHead";
+import MaintenanceTableHead from "./MaintenanceTableHead";
 
-type PPropertyTableHeader<T> = {
+type PMaintenanceTableHeader<T> = {
   table: Table<T>;
 };
 
-const PropertyTableHeader = <T,>({ table }: PPropertyTableHeader<T>) => {
+const MaintenanceTableHeader = <T,>({ table }: PMaintenanceTableHeader<T>) => {
   return (
     <MuiTableHead
       component="div"
@@ -20,6 +20,7 @@ const PropertyTableHeader = <T,>({ table }: PPropertyTableHeader<T>) => {
           display: "grid",
           top: 10,
           width: "100%",
+
           zIndex: theme.zIndex.appBar - 1,
         };
       }}
@@ -29,10 +30,10 @@ const PropertyTableHeader = <T,>({ table }: PPropertyTableHeader<T>) => {
           <MuiTableRow
             component="div"
             key={headerGroup.id}
-            sx={{ display: "flex", width: "100%" }}
+            sx={{ display: "flex", width: "100%",  }}
           >
             {headerGroup.headers.map(header => {
-              return <PropertyTableHead header={header} key={header.id} />;
+              return <MaintenanceTableHead header={header} key={header.id} />;
             })}
           </MuiTableRow>
         );
@@ -40,4 +41,4 @@ const PropertyTableHeader = <T,>({ table }: PPropertyTableHeader<T>) => {
     </MuiTableHead>
   );
 };
-export default PropertyTableHeader;
+export default MaintenanceTableHeader;

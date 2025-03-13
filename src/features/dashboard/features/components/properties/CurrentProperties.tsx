@@ -3,7 +3,7 @@ import { Box, TableContainer, Typography } from "@mui/material";
 import ViewAll from "../../../ViewAll";
 import PropertyTable from "./PropertyTable";
 
-const CurrentProperties: React.FC = () => {
+const CurrentProperties = () => {
   return (
     <Box sx={{ display: "block", width: "59%" }}>
       <Box
@@ -11,7 +11,6 @@ const CurrentProperties: React.FC = () => {
           display: "flex",
           justifyContent: "space-between",
           width: "100%",
-          height: "50%",
           alignItems: "center",
           padding: "12px 6px",
           borderBottom: "none",
@@ -28,7 +27,7 @@ const CurrentProperties: React.FC = () => {
   );
 };
 
-const PropertyList: React.FC = () => {
+const PropertyList = () => {
   return (
     <Box>
       <TableContainer

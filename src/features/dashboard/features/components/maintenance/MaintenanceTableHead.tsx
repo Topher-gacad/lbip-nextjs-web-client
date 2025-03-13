@@ -9,11 +9,11 @@ import {
 import { Fragment, useState } from "react";
 import { flexRender, Header } from "@tanstack/react-table";
 
-type PPropertyTableHead<T> = {
+type PMaintenanceTableHead<T> = {
   header: Header<T, unknown>;
 };
 
-const PropertyTableHead = <T,>({ header }: PPropertyTableHead<T>) => {
+const MaintenanceTableHead = <T,>({ header }: PMaintenanceTableHead<T>) => {
   const canPin = header.getContext().column.getCanPin();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -46,7 +46,13 @@ const PropertyTableHead = <T,>({ header }: PPropertyTableHead<T>) => {
               justifyContent: "space-between",
             }}
           >
-            <Stack sx={{ flexDirection: "row", gap: 2, alignItems: "center" }}>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: 2,
+                alignItems: "center",
+              }}
+            >
               <Typography
                 variant="subtitle1"
                 sx={{
@@ -97,4 +103,4 @@ const PropertyTableHead = <T,>({ header }: PPropertyTableHead<T>) => {
   );
 };
 
-export default PropertyTableHead;
+export default MaintenanceTableHead;
