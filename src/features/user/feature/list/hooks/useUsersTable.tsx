@@ -22,7 +22,7 @@ export const useUsersTable = () => {
         id: "full_name",
         header: "Full Name",
         enableSorting: false,
-        size: 250,
+        size: 280,
         meta: { label: "Full Name" },
         cell: ({ row, getValue }) => {
           const userId = row?.original?.id;
@@ -55,7 +55,7 @@ export const useUsersTable = () => {
       id: "roles",
       header: "Roles",
       enableSorting: false,
-      size: 250,
+      size: 280,
       meta: { label: "Roles" },
       cell: ({ getValue }) => {
         const roles = getValue();
@@ -67,7 +67,7 @@ export const useUsersTable = () => {
       id: "email",
       header: "Email",
       enableSorting: false,
-      size: 250, //size of column in px
+      size: 310, //size of column in px
       meta: { label: "Email" },
       // cell: ({ getValue }) => {
       //   return <button>{getValue()}</button>;
@@ -102,23 +102,23 @@ export const useUsersTable = () => {
       id: "contact_number",
       header: "Contact Number",
       enableSorting: false,
-      size: 200, //size of column in px
+      size: 250, //size of column in px
       meta: { label: "Contact number" },
     }),
-    columnHelper.accessor("created_at", {
-      id: "created_at",
-      header: "Created At",
-      enableSorting: false,
-      size: 250, //size of column in px
-      meta: { label: "Created at" },
-    }),
+    // columnHelper.accessor("created_at", {
+    //   id: "created_at",
+    //   header: "Created At",
+    //   enableSorting: false,
+    //   size: 250, //size of column in px
+    //   meta: { label: "Created at" },
+    // }),
     columnHelper.accessor("id", {
       id: "id",
       header: () => {
         return <Typography>Actions</Typography>;
       },
       enableSorting: false,
-      size: 130, //size of column in px
+      size: 150,
       meta: { label: "Actions" },
       cell: ({ cell }) => {
         return <UsersTableActions cell={cell} />;
