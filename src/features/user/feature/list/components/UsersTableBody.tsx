@@ -36,6 +36,7 @@ const UsersTableBody = ({ table }: TableBodyProps) => {
               key={row.id}
               selected={row.getIsSelected()}
               style={style}
+              sx={{px: 2.5}}
             >
               {cells.map(cell => {
                 return (
