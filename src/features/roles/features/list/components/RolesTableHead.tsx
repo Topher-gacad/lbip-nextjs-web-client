@@ -27,7 +27,14 @@ const RoleTableHead = <T,>({ header }: PRoleTableHead<T>) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   return (
-    <MuiTableCell sx={{ width: header.getSize() }} component="div">
+    <MuiTableCell
+      sx={{
+        width: header.getSize(),
+        bgcolor: "#FFFFFF",
+        mt: 2,
+      }}
+      component="div"
+    >
       {header.isPlaceholder ? null : (
         <Stack
           sx={{
@@ -48,7 +55,13 @@ const RoleTableHead = <T,>({ header }: PRoleTableHead<T>) => {
               justifyContent: "space-between",
             }}
           >
-            <Stack sx={{ flexDirection: "row", gap: 1, alignItems: "center" }}>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                gap: 1,
+                alignItems: "center",
+              }}
+            >
               <Typography
                 variant="subtitle1"
                 sx={{
