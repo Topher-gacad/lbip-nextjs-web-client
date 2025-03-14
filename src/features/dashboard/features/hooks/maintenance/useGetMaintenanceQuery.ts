@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   MaintenanceResponseSchema,
   TMaintenanceResponseSchema,
-} from "../../schema/maintenance";
+} from "../../../schema/maintenance";
 
 const getMaintenance = async (): Promise<TMaintenanceResponseSchema> => {
   const response = await axiosInstance.get<unknown>("maintenance", {

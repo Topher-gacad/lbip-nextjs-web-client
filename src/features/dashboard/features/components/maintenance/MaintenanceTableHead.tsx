@@ -21,8 +21,9 @@ const MaintenanceTableHead = <T,>({ header }: PMaintenanceTableHead<T>) => {
   return (
     <MuiTableCell
       sx={{
-        width: header.getSize(),
+        width: header.getSize() || "100%",
         backgroundColor: "#FEFEFE",
+        flexGrow: 1,
       }}
       component="div"
     >

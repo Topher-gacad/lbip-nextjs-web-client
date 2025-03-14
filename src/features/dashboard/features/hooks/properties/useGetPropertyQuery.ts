@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import {
   PropertyResponseSchema,
   TPropertyResponseSchema,
-} from "../../schema/property";
+} from "../../../schema/property";
 
 const getProperty = async (): Promise<TPropertyResponseSchema> => {
   const response = await axiosInstance.get<unknown>("property", {

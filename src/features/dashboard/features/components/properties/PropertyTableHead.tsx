@@ -21,7 +21,8 @@ const PropertyTableHead = <T,>({ header }: PPropertyTableHead<T>) => {
   return (
     <MuiTableCell
       sx={{
-        width: header.getSize(),
+        width: header.getSize() || "100%", // Fallback to full width if size is undefined
+        flexGrow: 1, // Enables expansion
         backgroundColor: "#FEFEFE",
       }}
       component="div"

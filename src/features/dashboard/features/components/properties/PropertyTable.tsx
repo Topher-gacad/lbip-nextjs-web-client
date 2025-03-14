@@ -9,7 +9,7 @@ import {
 
 import PropertyTableHeader from "./PropertyTableHeader";
 import PropertyTableBody from "./PropertyBody";
-import { usePropertyTable } from "../../hooks/usePropertyTable";
+import { usePropertyTable } from "../../hooks/properties/usePropertyTable";
 
 const PropertyTable = () => {
   const { table } = usePropertyTable();

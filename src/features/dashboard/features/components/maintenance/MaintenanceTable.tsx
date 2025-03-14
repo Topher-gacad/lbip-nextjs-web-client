@@ -6,7 +6,7 @@ import {
   Table as MuiTable,
   Box,
 } from "@mui/material";
-import { useMaintenanceTable } from "../../hooks/useMaintenanceTable";
+import { useMaintenanceTable } from "../../hooks/maintenance/useMaintenanceTable";
 import MaintenanceTableHeader from "./MaintenanceTableHeader";
 import MaintenanceTableBody from "./MaintenanceBody";
 

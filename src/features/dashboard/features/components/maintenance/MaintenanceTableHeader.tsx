@@ -18,9 +18,7 @@ const MaintenanceTableHeader = <T,>({ table }: PMaintenanceTableHeader<T>) => {
           backgroundColor: theme.palette.secondary.lighter,
           position: "sticky",
           display: "grid",
-          top: 10,
           width: "100%",
-
           zIndex: theme.zIndex.appBar - 1,
         };
       }}
@@ -30,7 +28,7 @@ const MaintenanceTableHeader = <T,>({ table }: PMaintenanceTableHeader<T>) => {
           <MuiTableRow
             component="div"
             key={headerGroup.id}
-            sx={{ display: "flex", width: "100%",  }}
+            sx={{ display: "flex", width: "100%" }}
           >
             {headerGroup.headers.map(header => {
               return <MaintenanceTableHead header={header} key={header.id} />;

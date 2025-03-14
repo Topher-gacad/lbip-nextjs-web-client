@@ -2,10 +2,11 @@ import React from "react";
 import { Box, TableContainer, Typography } from "@mui/material";
 import ViewAll from "../../../ViewAll";
 import PropertyTable from "./PropertyTable";
+import theme from "@/lib/mui/theme";
 
 const CurrentProperties = () => {
   return (
-    <Box sx={{ display: "block", width: "59%" }}>
+    <Box sx={{ display: "block", width: "100%" }}>
       <Box
         sx={{
           display: "flex",
@@ -18,7 +19,15 @@ const CurrentProperties = () => {
         }}
       >
         <Box sx={{ fontSize: "18px", fontWeight: 400, color: "#333" }}>
-          <Typography>Current Properties</Typography>
+          <Typography
+            sx={{
+              fontSize: "18px",
+              fontWeight: theme.typography.fontWeightRegular,
+              color: "#333",
+            }}
+          >
+            Current Properties
+          </Typography>
         </Box>
         <ViewAll to="/property" label="View All" />
       </Box>

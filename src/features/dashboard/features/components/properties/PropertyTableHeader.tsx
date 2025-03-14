@@ -18,7 +18,6 @@ const PropertyTableHeader = <T,>({ table }: PPropertyTableHeader<T>) => {
           backgroundColor: theme.palette.secondary.lighter,
           position: "sticky",
           display: "grid",
-          top: 10,
           width: "100%",
           zIndex: theme.zIndex.appBar - 1,
         };

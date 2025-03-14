@@ -3,7 +3,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { TMaintenance } from "../../schema/maintenance";
+import { TMaintenance } from "../../../schema/maintenance";
 import { useGetMaintenanceQuery } from "./useGetMaintenanceQuery";
 //   import RolesTableActionsCell from "../components/RoleTableActionsCell";
 

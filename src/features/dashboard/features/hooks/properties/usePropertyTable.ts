@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-table";
 //   import RolesTableActionsCell from "../components/RoleTableActionsCell";
 import { useGetPropertyQuery } from "./useGetPropertyQuery";
-import { TProperty } from "../../schema/property";
+import { TProperty } from "../../../schema/property";
 
 const columnHelper = createColumnHelper<TProperty>();
 
@@ -20,7 +20,7 @@ export const usePropertyTable = () => {
       id: "property",
       header: "Property",
       enableSorting: false,
-      size: 280,
+      size: 330,
       meta: { label: "Property" },
     }),
 
@@ -28,7 +28,7 @@ export const usePropertyTable = () => {
       id: "space",
       header: "Space",
       enableSorting: false,
-      size: 280,
+      size: 330,
       meta: { label: "Space" },
     }),
 
@@ -36,7 +36,7 @@ export const usePropertyTable = () => {
       id: "ticket",
       header: "Ticket",
       enableSorting: false,
-      size: 280,
+      size: 330,
       meta: { label: "ticket" },
     }),
 
@@ -44,7 +44,7 @@ export const usePropertyTable = () => {
       id: "action",
       header: "Action",
       enableSorting: false,
-      size: 84,
+      size: 93,
       meta: { label: "action" },
     }),
 
