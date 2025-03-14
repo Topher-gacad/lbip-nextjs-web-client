@@ -34,7 +34,7 @@ export default function CustomBreadcrumbs() {
   }, [pathname]);
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xxl">
       <Breadcrumbs separator="›" aria-label="breadcrumb" sx={{ mb: 3 }}>
         <MuiLink
           href="/dashboard"

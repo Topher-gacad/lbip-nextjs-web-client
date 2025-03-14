@@ -23,16 +23,12 @@ export const basePermissionSchema = z.object({
 export type BaseProfile = z.infer<typeof baseProfileSchema>;
 export const baseProfileSchema = z.object({
   id: z.string(),
-  employee_id: z.string().nullable().optional(),
   first_name: z.string(),
   middle_name: z.string().nullable().optional(),
   last_name: z.string(),
-  hourly_rate: z.number().nullable().optional(),
   gender: z.string().nullable().optional(),
-  contact_num: z.string().nullable().optional(),
+  contact_number: z.string().nullable().optional(),
   user_id: z.string(),
-  department_id: z.string(),
-  job_title_id: z.string(),
   deleted_at: z.string().nullable().optional(),
   created_at: z.string().nullable().optional(),
   updated_at: z.string().nullable().optional(),

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { RouteLayout } from "@/types/layout-type";
-import { Public_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
+import "@fontsource/montserrat";
 import AppProvider from "@/providers";
 import "@/styles/globals.css";
 
-const publicSans = Public_Sans({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   style: ["normal", "italic"],
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: RouteLayout) {
   return (
     <html lang="en">
-      <body className={`${publicSans.className}`}>
+      <body className={montserrat.className}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>

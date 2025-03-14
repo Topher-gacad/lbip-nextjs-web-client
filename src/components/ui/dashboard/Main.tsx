@@ -4,6 +4,7 @@ import { drawerWidth } from "./drawer/Drawer";
 const Main = styled("main", { shouldForwardProp: prop => prop !== "open" })<{
   open?: boolean;
 }>(({ theme }) => ({
+  height: "100vh",
   flexGrow: 1,
   overflowX: "hidden",
   paddingBlock: theme.spacing(3),

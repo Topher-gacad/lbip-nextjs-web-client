@@ -1,4 +1,12 @@
-import { purple, contrastText, cyan, gold, green, grey, red } from "./color";
+import {
+  contrastText,
+  cyan,
+  gold,
+  green,
+  grey,
+  red,
+  goldenYellow,
+} from "./color";
 import { PaletteOptions } from "@mui/material/styles";
 
 import "@mui/material/styles";
@@ -56,20 +64,20 @@ declare module "@mui/material/styles" {
 export const paletteOptions: PaletteOptions = {
   mode: "light",
   common: {
-    black: "#000",
+    black: "#1E1E1E",
     white: "#fff",
   },
   primary: {
-    lighter: purple[0],
-    100: purple[1],
-    200: purple[2],
-    light: purple[3],
-    400: purple[4],
-    main: purple[5],
-    dark: purple[6],
-    700: purple[7],
-    darker: purple[8],
-    900: purple[9],
+    lighter: goldenYellow[1],
+    100: goldenYellow[1],
+    200: goldenYellow[2],
+    light: goldenYellow[3],
+    400: goldenYellow[4],
+    main: goldenYellow[0],
+    dark: goldenYellow[6],
+    700: goldenYellow[7],
+    darker: goldenYellow[8],
+    900: goldenYellow[9],
     contrastText,
   },
   secondary: {
@@ -171,6 +179,7 @@ export const paletteOptions: PaletteOptions = {
     A700: grey[14],
     A800: grey[16],
   },
+
   text: {
     primary: grey[8],
     secondary: grey[6],

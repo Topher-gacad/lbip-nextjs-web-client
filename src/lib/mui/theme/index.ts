@@ -1,16 +1,22 @@
 import { createTheme } from "@mui/material/styles";
 
 import { paletteOptions } from "./palette";
-import { typographyOptions } from "./typography";
+
 import { customShadows } from "./shadows";
 import componentOverrides from "./overrides";
 
 import "@mui/material/styles";
+import { typographyOptions } from "./typography";
 
 declare module "@mui/material/styles" {
   interface Theme {
     customShadows?: ReturnType<typeof customShadows>;
   }
+
+  interface BreakpointOverrides {
+    xxl: true;
+  }
+
   interface ThemeOptions {
     customShadows?: ReturnType<typeof customShadows>;
   }
@@ -24,6 +30,7 @@ const theme = createTheme({
       md: 1024,
       lg: 1266,
       xl: 1440,
+      xxl: 1920,
     },
   },
   direction: "ltr",

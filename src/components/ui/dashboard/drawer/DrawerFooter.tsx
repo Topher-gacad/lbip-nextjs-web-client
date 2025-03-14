@@ -2,6 +2,7 @@ import { useAuthenticatedUser } from "@/features/auth/api/useAuthenticatedUser";
 import LogoutButton from "@/features/auth/components/LogoutButton";
 import { getNameInitials } from "@/utils";
 import { Avatar, Box, Stack, Toolbar, Typography } from "@mui/material";
+import { common } from "@mui/material/colors";
 
 const DrawerFooter = () => {
   const { data } = useAuthenticatedUser();
@@ -15,8 +16,7 @@ const DrawerFooter = () => {
         gap: 2,
         alignItems: "center",
         zIndex: theme => theme.zIndex.appBar + 1,
-        backgroundColor: theme => theme.palette.common.white,
-        borderTop: theme => `1px solid ${theme.palette.divider}`,
+        backgroundColor: theme => theme.palette.common.black,
       }}
     >
       <Box>
@@ -41,6 +41,7 @@ const DrawerFooter = () => {
             overflow: "hidden",
             textOverflow: "ellipsis",
             lineHeight: 1.2,
+            color: common.white,
             mb: 0,
           }}
         >
@@ -56,6 +57,7 @@ const DrawerFooter = () => {
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
+            color: common.white,
             lineHeight: 1.2,
             mt: 0,
           }}

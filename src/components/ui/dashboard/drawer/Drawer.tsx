@@ -7,6 +7,7 @@ import DrawerContent from "./DrawerContent";
 import DrawerHeader from "./DrawerHeader";
 import DrawerFooter from "./DrawerFooter";
 import useDrawerStore from "@/stores/useDrawerStore";
+import theme from "@/lib/mui/theme";
 
 export const drawerWidth = 260;
 
@@ -50,6 +51,7 @@ const Drawer = () => {
         <Box
           sx={{
             flexGrow: 1,
+            bgcolor: theme.palette.common.black,
             overflowY: "hidden",
             "&:hover": {
               overflowY: "auto",

@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { RouteLayout } from "@/types/layout-type";
 import Header from "@/components/ui/dashboard/Header";
 import Drawer from "@/components/ui/dashboard/drawer/Drawer";
-import { useMediaQuery } from "@mui/material";
+import { Container, useMediaQuery } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 import Main from "@/components/ui/dashboard/Main";
 import CustomBreadcrumbs from "@/components/ui/CustomBreadcrumbs";
@@ -19,13 +19,15 @@ const DashboardLayout = ({ children }: RouteLayout) => {
   );
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", background: "#F3F4F6" }}>
       <Header />
       <Drawer />
       <Main open={open || !isDesktopScreen}>
         <Toolbar />
         <CustomBreadcrumbs />
-        <Box>{children}</Box>
+        <Container maxWidth="xxl">
+          <Box>{children}</Box>
+        </Container>
       </Main>
     </Box>
   );

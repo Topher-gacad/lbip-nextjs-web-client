@@ -39,6 +39,7 @@ export const RolePermission = {
   Create: "create role",
   Update: "update role",
   HardDelete: "hard delete role",
+  Restore: "restore role",
 } as const;
 
 export const SchedulePermission = {
@@ -67,6 +68,7 @@ export const UserPermission = {
   Restore: "restore user",
   Import: "import user",
   Export: "export user",
+  ChangeOtherPassword: "change other user password",
 } as const;
 
 export const JobTitlePermission = {
